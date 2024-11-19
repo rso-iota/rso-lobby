@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - includeAll:
+      path: db/changelog/2024
+
+
+#  - include:
+#      file: db/changelog/2024/11/18-01-init-lobby.yaml

@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: be
+      POSTGRES_DB: lobby
+    ports:
+      - '5432:5432'
