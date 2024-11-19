@@ -28,6 +28,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build with jib and push to GH Container Registry
-        run: ./gradlew jib -Djib.to.image=$REGISTRY/$IMAGE_NAME \
+        run: |
+          ./gradlew jib -Djib.to.image=$REGISTRY/$IMAGE_NAME \
           -Djib.to.auth.username=${{ github.actor }} \
           -Djib.to.auth.password=${{ secrets.GITHUB_TOKEN }}
