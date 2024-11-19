@@ -8,9 +8,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
@@ -31,6 +28,8 @@ jobs:
 
       - name: Build with jib and push to GH Container Registry
         run: |
-          ./gradlew jib -Djib.to.image=$REGISTRY/$IMAGE_NAME \
+          ./gradlew jib \
+          --stacktrace --console=plain \
+          -Djib.to.image=ghcr.io/${{ github.repository }} \
           -Djib.to.auth.username=${{ github.actor }} \
           -Djib.to.auth.password=${{ secrets.GITHUB_TOKEN }}
