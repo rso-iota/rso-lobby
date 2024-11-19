@@ -1,6 +1,5 @@
 name: Java CI with Gradle
 
-permissions: write-all
 
 on:
   push:
@@ -14,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v4
