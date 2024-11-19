@@ -6,6 +6,8 @@ TODO
 
 This service is responsible for managing lobby creation, listing and deletion.
 
+- ... 
+
 ## Development
 
 Requirements:
