@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.core.annotation.AliasFor;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +40,7 @@ import java.lang.annotation.Target;
         description = ""
 )
 @RequestMapping(
-        produces = "application/json"
+        produces = MediaType.APPLICATION_JSON_VALUE
 )
 public @interface ControllerCommon {
     @AliasFor(

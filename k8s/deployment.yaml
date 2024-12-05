@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lobby-app
+  name: lobby-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lobby-app
+  template:
+    metadata:
+      labels:
+        app: lobby-app
+    spec:
+      containers:
+        # - image: ghcr.io/rso-iota/rso-lobby:latest
+        - image: lobby-service
+          imagePullPolicy: IfNotPresent
+          name: lobby-app
+          resources: {}
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/mydatabase
+            - name: SPRING_DATASOURCE_USERNAME
+              value: myuser
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: mypassword
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+

@@ -17,3 +17,9 @@ Requirements:
 - Gradle 
 - Docker (and `docker-compose`)
 - Preferably IntelliJ IDEA
+
+## To build image locally 
+
+```shell
+gradle jibDockerBuild --image=lobby-service
+```

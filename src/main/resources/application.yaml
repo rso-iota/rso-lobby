@@ -18,4 +18,4 @@ server:
 
 springdoc:
   api-docs:
-    enabled: true # Conf.
+    enabled: true # Conf. (swagger-ui/index.html)

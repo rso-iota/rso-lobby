@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1732470085558-1
+      author: janvasiljevic
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_lobbies
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: max_players
+                  type: INT
+            tableName: lobbies
+  - changeSet:
+      id: 1732470085558-2
+      author: janvasiljevic
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uc_lobbies_name
+            tableName: lobbies
+
