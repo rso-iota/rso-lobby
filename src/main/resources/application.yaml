@@ -12,10 +12,16 @@ spring:
   web:
     resources:
       add-mappings: false
+  servlet:
+    context-path: /api/lobby
 
 server:
   port: 8080 # Info
 
 springdoc:
   api-docs:
-    enabled: true # Conf. (swagger-ui/index.html)
+    enabled: true # Conf.
+    path: /public/v3/api-docs
+  swagger-ui:
+    path: /public/docs # Conf. The path to the Swagger UI
+    url: /public/v3/api-docs # Conf. The URL to the Swagger API docs
