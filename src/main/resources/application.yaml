@@ -9,6 +9,9 @@ spring:
     password: secret # Conf.
   jpa:
     open-in-view: false
+  flyway:
+    enabled: true
+    validate-migration-naming: true
   web:
     resources:
       add-mappings: false
