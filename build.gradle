@@ -44,9 +44,9 @@ dependencies {
     implementation 'org.flywaydb:flyway-core:10.16.0' // Flyway for database migrations
     implementation 'org.flywaydb:flyway-database-postgresql:10.16.0' // Flyway plugin for PostgreSQL
 
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.6.0'
-    implementation 'org.springdoc:springdoc-openapi-starter-common:2.6.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.7.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-common:2.7.0'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
