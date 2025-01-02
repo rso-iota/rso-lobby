@@ -16,6 +16,8 @@ spring:
     resources:
       add-mappings: false
 
+# logging.structured.format.console: ecs
+
 management:
   endpoint:
     health:
