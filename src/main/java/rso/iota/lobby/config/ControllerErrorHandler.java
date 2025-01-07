@@ -205,7 +205,7 @@ public class ControllerErrorHandler {
 
     private OutError createAndLogError(Exception e) {
         OutError outError = OutError.builder()
-                .message("Internal server error. If the error persists please contact support with the given error id.")
+                .message("Internal server error. If the error persists please contact support with the given error serverId.")
                 .build();
         MDC.put("error_id", outError.getId().toString());
         log.error(e.getMessage(), e);

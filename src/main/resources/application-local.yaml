@@ -1,0 +1,9 @@
+server:
+  port: 1111 # Info
+  servlet:
+    context-path: /api/lobby # Conf.
+
+svc:
+  game-app:
+    admin-url: http://localhost:8081
+    grpc-svc-template: http://localhost:8081

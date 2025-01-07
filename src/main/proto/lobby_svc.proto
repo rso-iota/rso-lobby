@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package rso_comms;
+
+message GameID {
+    string id = 1;
+}
+
+message Player {
+    string username = 1;
+    float size = 2;
+}
+
+enum EndGameReason {
+    WIN = 0;
+    INACTIVITY = 1;
+}
+
+message LiveDataRequest {
+    GameID id = 1;
+    repeated Player players = 2;
+}
+
+message EndGameRequest {
+    GameID id = 1;
+    EndGameReason reason = 2;
+}
+
+service LobbyService {
+    rpc DeleteGame(EndGameRequest) returns (GameID) {}
+    rpc UpdateLiveData(LiveDataRequest) returns (GameID) {}
+}

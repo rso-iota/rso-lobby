@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -17,18 +18,26 @@ public class OutLobby {
     String name;
 
     @NotNull
-    String description;
-
-    @NotNull
     Integer maxPlayers;
-
 
     @NotNull
     Integer currentPlayers;
+
+    @NotNull
+    Boolean archived;
 
     @NotNull
     String owner;
 
     @NotNull
     OffsetDateTime createdAt;
+
+    @NotNull
+    String serverId;
+
+    @NotNull
+    String gameId;
+
+    @NotNull
+    List<OutLiveData> liveData;
 }

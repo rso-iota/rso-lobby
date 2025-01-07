@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +16,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Lobby {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -33,11 +36,46 @@ public class Lobby {
     String name;
 
     @Column(
-            nullable = false,
-            length = 200
+            nullable = false
     )
-    String description;
+    String createdByPlayerId;
+
 
     @Column(nullable = false)
     Integer maxPlayers;
+
+    @Column(
+            nullable = false
+    )
+    Integer currentPlayers;
+
+    @Column(
+            nullable = false
+    )
+    String serverId;
+
+    @Column(
+            nullable = false,
+            unique = true
+    )
+    String gameId;
+
+    @Column(
+            nullable = false
+    )
+    Boolean archived;
+
+    @Column(
+            nullable = true
+    )
+    String archiveReason;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "lobby",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @ToString.Exclude
+    private List<LiveData> liveData = new ArrayList<>();
 }

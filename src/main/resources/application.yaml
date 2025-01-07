@@ -16,13 +16,41 @@ spring:
     resources:
       add-mappings: false
 
+grpc:
+  server:
+    port: 9090
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      GameAppAdmin:
+        failureRateThreshold: 3
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 3
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 3
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+
+
 # logging.structured.format.console: ecs
 
 management:
+  health:
+    circuitbreakers:
+      enabled: true
+    diskspace:
+      enabled: false
   endpoint:
     health:
       probes:
         enabled: true
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 server:
   port: 8080 # Info
   servlet:
@@ -35,3 +63,7 @@ springdoc:
   swagger-ui:
     path: /public/docs # Conf. The path to the Swagger UI
     url: /public/v3/api-docs # Conf. The URL to the Swagger API docs
+svc:
+  game-app:
+    admin-url:
+    grpc-svc-template: svc-game-{SERVER_ID}.svc.cluster.local

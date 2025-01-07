@@ -46,8 +46,9 @@ public class LobbyController {
     @Api201(description = "Created lobby")
     @Api400(description = "Invalid input")
     @Api409(description = "Lobby with this name already exists")
-    public ResponseEntity<OutLobby> createLobby(@Valid @RequestBody CreateLobby createLobby) {
-        return ResponseEntity.ok(lobbyService.createLobby(createLobby));
+    public ResponseEntity<OutLobby> createLobby(@Valid @RequestBody CreateLobby createLobby,
+                                                @RequestHeader(value = "X-User-Sub") String userId) {
+        return ResponseEntity.ok(lobbyService.createLobby(createLobby, userId));
     }
 
 
@@ -64,8 +65,8 @@ public class LobbyController {
             example = "123e4567-e89b-12d3-a456-426614174000"
     )
     @Api404(description = "Lobby not found")
-    public ResponseEntity<Void> deleteLobby(@PathVariable UUID id) {
-        lobbyService.deleteLobby(id);
+    public ResponseEntity<Void> deleteLobby(@PathVariable UUID id, @RequestHeader(value = "X-User-Sub") String userId) {
+        lobbyService.deleteLobby(id, userId);
         return ResponseEntity.noContent().build();
     }
 }
