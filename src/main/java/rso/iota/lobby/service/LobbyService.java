@@ -112,7 +112,7 @@ public class LobbyService {
                 .gameId(lobby.getGameId())
                 .archived(lobby.getArchived())
                 .owner(lobby.getCreatedByPlayerId())
-                .currentPlayers(0)
+                .currentPlayers(lobby.getCurrentPlayers())
                 .liveData(lobby.getLiveData().stream().map(this::toStatsDto).toList())
                 .build();
     }
