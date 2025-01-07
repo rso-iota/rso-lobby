@@ -40,7 +40,7 @@ public class GameAdminAppService {
     }
 
     public ResponseEntity<Void> deleteGame(String serverId, String gameId) {
-        String url = gameAppProperties.adminUrl() + String.format("/game?id=%s", gameId);
+        String url = gameAppProperties.grpcSvcTemplate() + String.format("/game?id=%s", gameId);
 
         if (url.contains("{SERVER_ID}")) {
             url = url.replace("{SERVER_ID}", serverId);
