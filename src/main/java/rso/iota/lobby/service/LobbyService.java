@@ -36,9 +36,10 @@ public class LobbyService {
         try {
             gameAdminAppService.deleteGame(lobby.getServerId(), lobby.getGameId());
         } catch (Exception e) {
-            log.warn("Failed to delete game with serverId {} and gameId {}. Proceeding with lobby archive",
+            log.warn("Failed to delete game with serverId {} and gameId {}. Proceeding with lobby archive. Error: {}",
                     lobby.getServerId(),
-                    lobby.getGameId());
+                    lobby.getGameId(),
+                    e.getMessage());
         }
 
         if (lobby.getArchived()) {
@@ -48,6 +49,8 @@ public class LobbyService {
 
         lobby.setArchived(true);
         lobby.setArchiveReason("Deleted by owner");
+
+        lobbyRepository.save(lobby);
 
         log.info("Set lobby with serverId {} to archived by user {}", id, userId);
     }
