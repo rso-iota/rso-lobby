@@ -1,6 +1,5 @@
 package rso.iota.lobby.dto;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -12,8 +11,6 @@ public class CreateLobby {
     @NotNull
     @NotBlank
     private String name;
-    @NotNull
-    private String description;
     @NotNull
     @Min(2)
     @Max(10)
